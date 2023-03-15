@@ -1,0 +1,116 @@
+---
+title: "Multiple Regression Analysis of Credit Card Data"
+author: "Niko Seino"
+date: "2023-03-13"
+output: html_document
+---
+### Business Question:
+1. What variables effectively contribute to predicting active cardholders'
+credit card balances?
+2. What credit card balance might a new active cardholder hold
+depending on certain variables?
+
+Install and load packages
+```{r setup, include=FALSE}
+library(tidyverse)
+library(lm.beta)
+library(olsrr)
+```
+
+Import and view data
+```{r}
+setwd("~/")
+carddf <- read_csv("Credit.csv")
+View(carddf)
+```
+Check for any missing values
+```{r}
+sum(is.na(carddf))
+```
+Convert categorical variables to factors
+```{r}
+carddf$Student <- factor(carddf$Student, levels = c(0, 1), labels = c("No","yes"))
+carddf$Gender <- factor(carddf$Gender, levels = c(0, 1), labels = c("Male","Female"))
+carddf$Married <- factor(carddf$Married, levels = c(0, 1), labels = c("No","yes"))
+```
+
+
+Generate summary statistics
+```{r}
+summary(carddf)
+```
+Partition the data into a training set and a validation set
+(Since it is a small dataset, will divide 50-50)
+```{r}
+set.seed(42)
+sample <- sample(c(TRUE, FALSE), nrow(carddf), replace=TRUE, prob=c(0.5,0.5))
+traincard  <- carddf[sample, ]
+validatecard <- carddf[!sample, ]
+```
+
+Create a correlation matrix for the quantitative variables in the training dataframe
+```{r}
+cor(traincard[c(-6, -7, -8)])
+```
+Conduct multiple regression analysis using the training dataframe with 'Balance'
+as the outcome variable, and all others as predictor variables. View the summary. 
+```{r}
+card_MR <- lm(Balance ~ Income + Limit + Rating + Age + Education + Student + Gender + Married, traincard)
+summary(card_MR)
+```
+Calculate Variance Inflation Factor for each predictor variable to assess 
+multicollinearity
+```{r}
+vif(card_MR)
+```
+Conduct a multiple regression analysis with 'Balance' as the outcome variable and all other variables
+except 'Limit' as predictor variables
+```{r}
+card_MR2 <- lm(Balance ~ Income + Rating + Age + Education + 
+    Student + Gender + Married, data = traincard)
+summary(card_MR2)
+```
+Create a residual plot using these results
+```{r}
+card_predict = predict(card_MR2)
+card_resid = resid(card_MR2)
+resid_df <- data.frame(card_predict, card_resid)
+
+ggplot(resid_df, aes(x= card_predict, y = card_resid)) +
+  geom_point() +
+  labs(title = "Residual Plot", x = "Predicted Values", y = "Residuals")
+```
+Create a probability plot
+```{r}
+card_stdres <- rstandard(card_MR2)    #get standardized residuals
+qqnorm(card_stdres, ylab = "Standardized residuals", xlab = "Normal scores")
+```
+
+Create a new regression analysis using the training dataframe with 'Balance' as
+the outcome variable and only the statistically significant variables as predictors
+```{r}
+cardSS_MR <- lm(Balance ~ Income + Rating + Age + Student, traincard)
+summary(cardSS_MR)
+```
+Run a standardized regression with standardized variables
+```{r}
+lm.beta(cardSS_MR)
+```
+
+
+Conduct a final multiple regression analysis with the validation dataframe with 'Balance' as 
+the outcome variable and statistically significant variables as the predictors
+```{r}
+validcard_df <- lm(Balance ~ Income + Rating + Age + Student, validatecard)
+summary(validcard_df)
+```
+Predict the credit card balances of the new cardholders in credic_card_prediction.csv
+with 95% prediction intervals
+```{r}
+setwd("~/")
+newcard <- read_csv("credit_card_prediction.csv")
+newcard$Student <- factor(newcard$Student, levels = c(0, 1), labels = c("No","yes"))
+
+predict(validcard_df, newcard, interval = "prediction", level = .95)
+```
+
