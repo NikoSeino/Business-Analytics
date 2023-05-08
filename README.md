@@ -3,37 +3,40 @@ Business Analytics Study Guide
 Niko Seino
 2023-03-20
 
-<a href="https://rpubs.com/nseino/1037586">Business Analytics Study Guide</a>
-
-- <a href="#1-intro-what-is-business-analytics"
-  id="toc-1-intro-what-is-business-analytics">1 Intro: What is Business
+- <a href="#intro-what-is-business-analytics"
+  id="toc-intro-what-is-business-analytics">Intro: What is Business
   Analytics?</a>
-- <a href="#2-descriptive-data-mining"
-  id="toc-2-descriptive-data-mining">2 Descriptive Data Mining</a>
-  - <a href="#21-cluster-analysis" id="toc-21-cluster-analysis">2.1 Cluster
+- <a href="#descriptive-data-mining"
+  id="toc-descriptive-data-mining">Descriptive Data Mining</a>
+  - <a href="#cluster-analysis" id="toc-cluster-analysis">Cluster
     Analysis</a>
-    - <a href="#211-measuring-similarity-and-dissimilarity"
-      id="toc-211-measuring-similarity-and-dissimilarity">2.1.1 Measuring
-      Similarity and Dissimilarity</a>
-    - <a href="#212-cluster-analysis-methods"
-      id="toc-212-cluster-analysis-methods">2.1.2 Cluster Analysis Methods</a>
-- <a href="#3-linear-regression" id="toc-3-linear-regression">3 Linear
-  Regression</a>
-  - <a href="#301-simple-linear-regression"
-    id="toc-301-simple-linear-regression">3.0.1 Simple linear regression</a>
-  - <a href="#302-multiple-regression"
-    id="toc-302-multiple-regression">3.0.2 Multiple Regression</a>
-- <a href="#4-logistic-regression" id="toc-4-logistic-regression">4
-  Logistic Regression</a>
-- <a href="#5-time-series-analysis" id="toc-5-time-series-analysis">5 Time
+    - <a href="#measuring-similarity-and-dissimilarity"
+      id="toc-measuring-similarity-and-dissimilarity">Measuring Similarity and
+      Dissimilarity</a>
+    - <a href="#cluster-analysis-methods"
+      id="toc-cluster-analysis-methods">Cluster Analysis Methods</a>
+- <a href="#predictive-data-mining"
+  id="toc-predictive-data-mining">Predictive Data Mining</a>
+  - <a href="#linear-regression" id="toc-linear-regression">Linear
+    Regression</a>
+    - <a href="#simple-linear-regression"
+      id="toc-simple-linear-regression">Simple linear regression</a>
+    - <a href="#multiple-regression" id="toc-multiple-regression">Multiple
+      Regression</a>
+  - <a href="#logistic-regression" id="toc-logistic-regression">Logistic
+    Regression</a>
+    - <a href="#addressing-potential-issues"
+      id="toc-addressing-potential-issues">Addressing Potential Issues</a>
+    - <a href="#performance-measures"
+      id="toc-performance-measures">Performance Measures</a>
+- <a href="#time-series-analysis" id="toc-time-series-analysis">Time
   Series Analysis</a>
-  - <a href="#501-forecasting-methods"
-    id="toc-501-forecasting-methods">5.0.1 Forecasting Methods</a>
-  - <a href="#502-assessing-forecast-accuracy"
-    id="toc-502-assessing-forecast-accuracy">5.0.2 Assessing Forecast
-    Accuracy</a>
+  - <a href="#forecasting-methods" id="toc-forecasting-methods">Forecasting
+    Methods</a>
+  - <a href="#assessing-forecast-accuracy"
+    id="toc-assessing-forecast-accuracy">Assessing Forecast Accuracy</a>
 
-# 1 Intro: What is Business Analytics?
+# Intro: What is Business Analytics?
 
 The scientific process of transforming data into insights for making
 better decisions. I.e., helping businesses improve processes, products,
@@ -101,7 +104,7 @@ or services based on data.
   - Provide valid conclusions and understandable recommendations to
     their clients
 
-# 2 Descriptive Data Mining
+# Descriptive Data Mining
 
 - Descriptive data-mining, AKA unsupervised learning:
   - no outcome variable to predict
@@ -110,7 +113,7 @@ or services based on data.
   - no definitive measure of accuracy–qualitative assessments assess and
     compare results
 
-## 2.1 Cluster Analysis
+## Cluster Analysis
 
 - Goals is to break down a large group of observations into a smaller
   group with similar characteristics
@@ -121,7 +124,7 @@ or services based on data.
   groups (market segmentation)
 - Can also be used to identify outliers
 
-### 2.1.1 Measuring Similarity and Dissimilarity
+### Measuring Similarity and Dissimilarity
 
 **For Numeric Variables:**
 
@@ -137,12 +140,14 @@ or services based on data.
   - Deals better with outliers and data with more dimensionality
 
 Euclidean Distance Formula for observations *u*, *v* with *q* variables:
-$$d_uv = \sqrt{(u_1-v_1)^2+(u_2-v_2)^2+...(u_q-v_q)^2}$$ 
 
-Manhattan Distance Formula: 
-$$d_uv = |u_1-v_1|+|u_2-v_2|+...+|u_q-v_q|$$ 
+$$
+d_uv = \sqrt{(u_1-v_1)^2+(u_2-v_2)^2+...(u_q-v_q)^2}
+$$
 
-**For Categorical Variables:**
+Manhattan Distance Formula: $$
+d_uv = |u_1-v_1|+|u_2-v_2|+...+|u_q-v_q|
+$$ **For Categorical Variables:**
 
 Note: Categorical variables should be encoded as dummy variables,
 e.g. 0-1
@@ -162,7 +167,7 @@ e.g. 0-1
     minus the number of matching zero values for *u* and *v*
   - Jaccard’s distance = 1-Jaccard’s Coefficient
 
-### 2.1.2 Cluster Analysis Methods
+### Cluster Analysis Methods
 
 - K-means Clustering
   - Used with numerical observations
@@ -228,7 +233,14 @@ e.g. 0-1
   2.  Numerically encode categorical variables (binary coding) and then
       standardize both categorical and numerical variable values
 
-# 3 Linear Regression
+# Predictive Data Mining
+
+- Uses statistical models on current data to predict a future outcome
+- In business, used to either estimate continuous outcomes, or classify
+  categorical outcomes.
+- Requires having a large data set with many variables
+
+## Linear Regression
 
 **Regression**
 
@@ -247,12 +259,11 @@ $$SSE = \sum (y - \hat{y})^2$$
     predicts *y*
   - Best fitting line will have smallest possible SSE
 
-### 3.0.1 Simple linear regression
+### Simple linear regression
 
-$$y = ß_0 + ß_1x + ε$$ 
-ß0 = intercept 
-ß1 = slope 
-ε = error term (unexplained variability)
+$$
+y = ß_0 + ß_1x + ε  
+$$ ß0 = intercept ß1 = slope ε = error term (unexplained variability)
 
 For an estimated regression equation, ε is dropped
 
@@ -276,10 +287,11 @@ For an estimated regression equation, ε is dropped
   - Always between 0 and 1: value closer to 1 indicates the model is
     better at predicting *y* values
 
-### 3.0.2 Multiple Regression
+### Multiple Regression
 
-$$y = ß_0 + ß_1x_1 + ß_2x_2 + ... + ß_qx_q + ε$$ 
-*q* = number of independent variables  
+$$
+y = ß_0 + ß_1x_1 + ß_2x_2 + ... + ß_qx_q + ε  
+$$ *q* = number of independent variables  
 ß0 = the mean of *y* when all of the *x* variables are 0
 
 ß1 = the change in the mean value of *y* with a one unit increase in the
@@ -346,11 +358,97 @@ Possible issues with multiple regressions:
       to construct a regression equation that can be used to make
       predictions
 
-# 4 Logistic Regression
+## Logistic Regression
 
-content pending
+- Used if the outcome we are predicting is categorical, not continuous
+- Predicting probability, or likelihood of the outcome
+  - Examples: Predict whether an applicant will or will not default on a
+    loan
+  - Predict whether new employees will accept job offers based on salary
+    and benefits
+  - Predict whether or not a customer will make a claim based on certain
+    characteristics
+- Instead of predicting a y value, predicting the log odds
+- In a logistic regression summary, the coefficient tells us the average
+  change in the log odds of the outcome, given a 1-unit change in the
+  predictor variable
 
-# 5 Time Series Analysis
+Given probability (p), odds = p/1-p; so the logistic regression equation
+is:
+
+$$
+ln(\hat{p}/1-\hat{p}) = ß_0 + ß_1x_1 + ß_2x_2 + ... + ß_qx_q 
+$$
+
+### Addressing Potential Issues
+
+**Data Partitioning**
+
+- Once a data sample has been prepared for analysis, it should be
+  partitioned into 2 or 3 sets to appropriately evaluate the performance
+  of data mining models (Static Holdout Method)
+  1.  Training set - used to build the model (see which variables best
+      predict outcome)
+  2.  Validation set - try a few of the best models
+  3.  Testing Set - run the best model
+
+**Class Imbalance**
+
+- With a binary outcome variable, the outcomes fall into either a
+  majority class or minority class. Class imbalance occurs when there
+  were many more observations falling into one class than another. Ways
+  to address this:
+  1.  Undersampling - randomly sample fewer observations from majority
+      class, and use all observations from minority class
+      - con: may not capture important information from majority class
+  2.  Oversampling - use all or most observations from majority class,
+      and random sample of minority class with replacement (i.e. making
+      copies of the minority class observations)
+      - con: may create a data set that doesn’t accurately reflect the
+        original
+  3.  Random Oversampling Examples (ROSE) - uses bootstrapping to create
+      a synthetic training set with a balanced number of observations in
+      each class
+
+### Performance Measures
+
+- Set a probability cuttoff (usually .5) that will determine into which
+  category an observation will fall
+- Classification error is commonly displayed in a confusion matrix,
+  which tells how many outcomes the model got right and wrong
+  - Overall error rate = \# of incorrectly predicted outcomes / total \#
+    of outcomes x 100
+  - Accuracy = 1-overall error rate
+  - Rate of correctly predicting a positive = sensitivity
+  - Rate of correctly predicting a negative = specificity
+
+![confusion matrix](https://user-images.githubusercontent.com/102825218/236906201-e4a9c41d-8ae0-426e-b9d5-b2c4b6e07086.png)
+
+- Receiver Operating Characteristic (ROC) Curve: graphical approach to
+  showing trade offs of model’s ability to correctly predict positives
+  to negatives
+  - Has error rate of predicting a negative on the x-axis, and true
+    positive (sensitivity) rate on the y-axis
+  - Evaluate the area under the ROC curve (AUC)
+    - Larger AUC = better classifier; means we would not see the
+      classifications in our model by random chance
+
+![Roc_curve svg](https://user-images.githubusercontent.com/102825218/236906148-eac40c66-6cea-46fa-8a79-2e8eaf82f7bb.png)
+
+Logistic Regression Summary:
+
+1.  Create your test, training, and validation data sets
+2.  Test for imbalance by creating undersample, oversample, and ROSE
+    sets
+3.  Perform logistic regressions on each set
+4.  Generate confusion matrices for each regression
+5.  Obtain probabilities for each observation in the validation set
+6.  Attach these probabilities to the validation dataframe
+7.  Obtain predicted class for each observation and attach to the
+    validation dataframe
+8.  Apply the best model to the test set
+
+# Time Series Analysis
 
 **Forecasting**
 
@@ -400,7 +498,7 @@ content pending
   - e.g. periods of moderate inflation followed by rapid inflation
   - Can be extremely difficult to forecast
 
-### 5.0.1 Forecasting Methods
+### Forecasting Methods
 
 For time series data with **horizontal** patterns:
 
@@ -458,19 +556,16 @@ y-intercept *b1* = the slope
 $$ \hat{y}_t = ß_0 + ß_1{Qtr1}_t + b_2{Qtr2}_t + b_3{Qtr3}_t $$
 
 - When the data has seasonality with trend, combine the previous two
-  approaches, which results in the following equation:  
-  
-$$ \hat{y}_t = ß_0 + ß_1{Qtr1}_t + b_2{Qtr2}_t + b_3{Qtr3}_t + b_{4t} $$
+  approaches, which results in the following equation:
 
+$$ \hat{y}_t = ß_0 + ß_1{Qtr1}_t + b_2{Qtr2}_t + b_3{Qtr3}_t + b_{4t}$$
 
-### 5.0.2 Assessing Forecast Accuracy
+### Assessing Forecast Accuracy
 
 **Forecast Error**: the difference between the actual and the forecasted
 values for period *t*
 
-$$ e_t = y_t - \hat{y}_t $$ 
-
-* A positive error means the forecast
+$$ e_t = y_t - \hat{y}_t $$ \* A positive error means the forecast
 method underestimated the actual value, negative means it overestimated
 
 **Mean Absolute Error (MAE)**: The average of the absolute values of the
@@ -497,4 +592,3 @@ $$ MAPE = \sum{|(e_t/y_t)100|}/n-k $$
 
 - We can use these accuracy measures to compare different forecasting
   methods and choose the one with the lowest error values.
-
