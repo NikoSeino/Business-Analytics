@@ -146,6 +146,7 @@ d_uv = \sqrt{(u_1-v_1)^2+(u_2-v_2)^2+...(u_q-v_q)^2}
 $$
 
 Manhattan Distance Formula: 
+
 $$
 d_uv = |u_1-v_1|+|u_2-v_2|+...+|u_q-v_q|
 $$
