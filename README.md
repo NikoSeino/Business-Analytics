@@ -145,9 +145,12 @@ $$
 d_uv = \sqrt{(u_1-v_1)^2+(u_2-v_2)^2+...(u_q-v_q)^2}
 $$
 
-Manhattan Distance Formula: $$
+Manhattan Distance Formula: 
+$$
 d_uv = |u_1-v_1|+|u_2-v_2|+...+|u_q-v_q|
-$$ **For Categorical Variables:**
+$$
+
+**For Categorical Variables:**
 
 Note: Categorical variables should be encoded as dummy variables,
 e.g. 0-1
@@ -263,7 +266,9 @@ $$SSE = \sum (y - \hat{y})^2$$
 
 $$
 y = ß_0 + ß_1x + ε  
-$$ ß0 = intercept ß1 = slope ε = error term (unexplained variability)
+$$ 
+
+ß0 = intercept ß1 = slope ε = error term (unexplained variability)
 
 For an estimated regression equation, ε is dropped
 
@@ -291,9 +296,10 @@ For an estimated regression equation, ε is dropped
 
 $$
 y = ß_0 + ß_1x_1 + ß_2x_2 + ... + ß_qx_q + ε  
-$$ *q* = number of independent variables  
-ß0 = the mean of *y* when all of the *x* variables are 0
+$$ 
 
+*q* = number of independent variables  
+ß0 = the mean of *y* when all of the *x* variables are 0,
 ß1 = the change in the mean value of *y* with a one unit increase in the
 ß1 variable, holding all other independent variables in the model
 constant
@@ -565,7 +571,9 @@ $$ \hat{y}_t = ß_0 + ß_1{Qtr1}_t + b_2{Qtr2}_t + b_3{Qtr3}_t + b_{4t}$$
 **Forecast Error**: the difference between the actual and the forecasted
 values for period *t*
 
-$$ e_t = y_t - \hat{y}_t $$ \* A positive error means the forecast
+$$ e_t = y_t - \hat{y}_t $$ 
+
+* A positive error means the forecast
 method underestimated the actual value, negative means it overestimated
 
 **Mean Absolute Error (MAE)**: The average of the absolute values of the
