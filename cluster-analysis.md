@@ -1,4 +1,4 @@
-Cluster Analysis
+Cluster Analysis Example
 ================
 Niko Seino
 2023-05-10
