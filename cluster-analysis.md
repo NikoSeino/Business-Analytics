@@ -40,30 +40,22 @@ options(scipen=+500000) #tells program not to use scientific notation unless ove
 ggplot(magdf) +
   geom_histogram(aes(x=Age), binwidth = 1)
 ```
-
 ![](cluster-analysis_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
-
 ``` r
 ggplot(magdf) +
   geom_histogram(aes(x=Value.of.Investments), binwidth = 5000)
 ```
-
 ![](cluster-analysis_files/figure-gfm/unnamed-chunk-2-2.png)<!-- -->
-
 ``` r
 ggplot(magdf) +
   geom_histogram(aes(x=Number.of.Transactions), binwidth = 1)
 ```
-
 ![](cluster-analysis_files/figure-gfm/unnamed-chunk-2-3.png)<!-- -->
-
 ``` r
 ggplot(magdf) +
   geom_histogram(aes(x=Household.Income), binwidth = 5000)
 ```
-
 ![](cluster-analysis_files/figure-gfm/unnamed-chunk-2-4.png)<!-- -->
-
 ``` r
 #add labels to binary variables
 magdf$Female <- factor(magdf$Female, levels = c(0, 1), labels = c("No", "Yes"))
@@ -120,7 +112,7 @@ ggplot(elbowdf, aes(x=k_values, y=wss_values)) +
   geom_point()
 ```
 
-![](cluster-analysis_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![unnamed-chunk-6-1](https://github.com/NikoSeino/Business-Analytics/assets/102825218/6e29d687-0a6b-4bbc-9879-b16d7a417f9f)
 
 4.  Run analysis with appropriate number of clusters. Based on the plot,
     we will use k=4 for number of clusters.
