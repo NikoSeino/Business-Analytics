@@ -409,7 +409,7 @@ plot(perfROCU)
 abline(a=0, b= 1)
 ```
 
-![](logistic_regression_example_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![unnamed-chunk-11-1](https://github.com/NikoSeino/Business-Analytics/assets/102825218/deb367c7-0ee4-4656-a351-bd644b222484)
 
 ``` r
 # compute AUC 
@@ -432,7 +432,7 @@ plot(perfROC)
 abline(a=0, b= 1)
 ```
 
-![](logistic_regression_example_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![unnamed-chunk-12-1](https://github.com/NikoSeino/Business-Analytics/assets/102825218/d42a3d2c-4302-4821-b754-99fd21dce9df)
 
 ``` r
 # compute AUC 
@@ -455,7 +455,7 @@ plot(perfROCR)
 abline(a=0, b= 1)
 ```
 
-![](logistic_regression_example_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![unnamed-chunk-13-1](https://github.com/NikoSeino/Business-Analytics/assets/102825218/f6010e87-495f-4a9d-ba0e-590611b5148f)
 
 ``` r
 # compute AUC 
@@ -523,7 +523,7 @@ plot(perfROCtest)
 abline(a=0, b= 1)
 ```
 
-![](logistic_regression_example_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![unnamed-chunk-14-1](https://github.com/NikoSeino/Business-Analytics/assets/102825218/fc1c484e-4031-446f-a3ac-c75f6bea3e76)
 
 ``` r
 # compute AUC 
